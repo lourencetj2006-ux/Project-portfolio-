@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lourence Tj R Non | Developer Portfolio</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
+
+:root{
+  --bg:#050509;
+  --card:rgba(16,16,23,.72);
+  --text:#ffffff;
+  --muted:#9b9ba7;
+  --border:rgba(255,255,255,.09);
+  --purple:#7c5cff;
+  --purple2:#b49aff;
+  --cyan:#55d6ff;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+/* =========================
+   ANIMATED BACKGROUND
+========================= */
+
+body::before{
+  content:"";
+  position:fixed;
+  width:600px;
+  height:600px;
+  background:var(--purple);
+  filter:blur(180px);
+  opacity:.12;
+  top:-250px;
+  left:-200px;
+  z-index:-2;
+  animation:orb1 10s infinite alternate ease-in-out;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  width:500px;
+  height:500px;
+  background:var(--cyan);
+  filter:blur(180px);
+  opacity:.08;
+  bottom:-250px;
+  right:-200px;
+  z-index:-2;
+  animation:orb2 12s infinite alternate ease-in-out;
+}
+
+@keyframes orb1{
+  from{
+    transform:translate(0,0);
+  }
+  to{
+    transform:translate(250px,180px);
+  }
+}
+
+@keyframes orb2{
+  from{
+    transform:translate(0,0);
+  }
+  to{
+    transform:translate(-200px,-150px);
+  }
+}
+
+/* GRID BACKGROUND */
+
+.grid-bg{
+  position:fixed;
+  inset:0;
+  z-index:-3;
+  opacity:.22;
+  background-image:
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:50px 50px;
+  mask-image:linear-gradient(to bottom,black,transparent);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  height:75px;
+  padding:0 8%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  background:rgba(5,5,9,.7);
+  backdrop-filter:blur(20px);
+
+  border-bottom:1px solid var(--border);
+}
+
+.logo{
+  color:white;
+  text-decoration:none;
+  font-size:22px;
+  font-weight:900;
+  letter-spacing:-1px;
+}
+
+.logo span{
+  color:var(--purple2);
+  text-shadow:0 0 15px var(--purple);
+}
+
+nav{
+  display:flex;
+  gap:30px;
+}
+
+nav a{
+  color:#999;
+  text-decoration:none;
+  font-size:14px;
+  position:relative;
+  transition:.3s;
+}
+
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-8px;
+  width:0;
+  height:2px;
+  background:var(--purple2);
+  transition:.3s;
+}
+
+nav a:hover{
+  color:white;
+}
+
+nav a:hover::after{
+  width:100%;
+}
+
+.menu{
+  display:none;
+  background:none;
+  border:0;
+  color:white;
+  font-size:27px;
+  cursor:pointer;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  min-height:calc(100vh - 75px);
+  padding:100px 8%;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  align-items:center;
+  gap:80px;
+  position:relative;
+}
+
+.hero-content{
+  animation:heroIn 1s ease forwards;
+}
+
+@keyframes heroIn{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.tag{
+  color:var(--purple2);
+  font-size:12px;
+  font-weight:bold;
+  letter-spacing:4px;
+  margin-bottom:18px;
+}
+
+.hero h1{
+  font-size:clamp(50px,7vw,92px);
+  line-height:.92;
+  letter-spacing:-5px;
+  margin-bottom:25px;
+}
+
+.hero h1 span{
+  display:block;
+  color:transparent;
+  background:linear-gradient(
+    90deg,
+    #fff,
+    var(--purple2),
+    var(--cyan),
+    #fff
+  );
+  background-size:300%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  animation:textGlow 6s linear infinite;
+}
+
+@keyframes textGlow{
+  to{
+    background-position:300%;
+  }
+}
+
+.hero h2{
+  font-size:27px;
+  margin-bottom:20px;
+  color:#eee;
+}
+
+.typing{
+  color:var(--purple2);
+}
+
+.description{
+  max-width:620px;
+  color:var(--muted);
+  font-size:17px;
+}
+
+.buttons{
+  display:flex;
+  gap:15px;
+  margin-top:35px;
+}
+
+.btn{
+  padding:14px 25px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:bold;
+  display:inline-block;
+  transition:.3s;
+}
+
+.primary{
+  color:white;
+  background:linear-gradient(
+    135deg,
+    var(--purple),
+    #5d43db
+  );
+  box-shadow:0 0 30px rgba(124,92,255,.2);
+}
+
+.primary:hover{
+  transform:translateY(-4px);
+  box-shadow:0 15px 40px rgba(124,92,255,.35);
+}
+
+.secondary{
+  color:white;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.03);
+  backdrop-filter:blur(10px);
+}
+
+.secondary:hover{
+  transform:translateY(-4px);
+  border-color:var(--purple);
+}
+
+/* =========================
+   CODE WINDOW
+========================= */
+
+.code-window{
+  position:relative;
+  background:rgba(12,12,17,.8);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:28px;
+
+  box-shadow:
+    0 30px 100px rgba(0,0,0,.5),
+    0 0 80px rgba(124,92,255,.12);
+
+  transform:rotate(2deg);
+  animation:float 5s ease-in-out infinite;
+  overflow:hidden;
+}
+
+.code-window::before{
+  content:"";
+  position:absolute;
+  width:200px;
+  height:200px;
+  background:var(--purple);
+  filter:blur(90px);
+  opacity:.15;
+  right:-80px;
+  top:-80px;
+}
+
+@keyframes float{
+  0%,100%{
+    transform:rotate(2deg) translateY(0);
+  }
+  50%{
+    transform:rotate(2deg) translateY(-12px);
+  }
+}
+
+.dots{
+  display:flex;
+  gap:7px;
+  margin-bottom:22px;
+}
+
+.dots i{
+  width:11px;
+  height:11px;
+  border-radius:50%;
+  background:#444;
+}
+
+.dots i:first-child{
+  background:#ff5f57;
+}
+
+.dots i:nth-child(2){
+  background:#febc2e;
+}
+
+.dots i:last-child{
+  background:#28c840;
+}
+
+pre{
+  color:#ddd;
+  overflow-x:auto;
+  font-size:14px;
+}
+
+.pink{
+  color:#ff79c6;
+}
+
+.green{
+  color:#8be9fd;
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.section{
+  padding:120px 8%;
+  border-top:1px solid var(--border);
+  position:relative;
+}
+
+.section-title{
+  font-size:clamp(38px,5vw,62px);
+  letter-spacing:-3px;
+  margin-bottom:45px;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
+}
+
+.about-grid p{
+  color:var(--muted);
+  font-size:18px;
+  margin-bottom:20px;
+}
+
+.info-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:30px;
+  backdrop-filter:blur(15px);
+  box-shadow:0 20px 60px rgba(0,0,0,.2);
+}
+
+.info-card div{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 0;
+  border-bottom:1px solid var(--border);
+}
+
+.info-card div:last-child{
+  border-bottom:none;
+}
+
+.info-card strong{
+  font-size:28px;
+}
+
+.info-card span{
+  color:var(--muted);
+}
+
+/* =========================
+   SKILLS
+========================= */
+
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+
+.skill-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:28px;
+  transition:.4s;
+  backdrop-filter:blur(15px);
+}
+
+.skill-card:hover{
+  transform:translateY(-10px);
+  border-color:rgba(124,92,255,.5);
+  box-shadow:0 20px 50px rgba(124,92,255,.12);
+}
+
+.skill-icon{
+  width:58px;
+  height:58px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(
+    135deg,
+    #21183e,
+    #151522
+  );
+  color:var(--purple2);
+  border-radius:14px;
+  font-weight:bold;
+  margin-bottom:20px;
+  box-shadow:inset 0 0 20px rgba(124,92,255,.1);
+}
+
+.skill-card p{
+  color:var(--muted);
+  margin-top:7px;
+}
+
+/* =========================
+   PROJECTS
+========================= */
+
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+
+.project-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:22px;
+  overflow:hidden;
+  transition:.4s;
+  backdrop-filter:blur(15px);
+}
+
+.project-card:hover{
+  transform:translateY(-12px);
+  border-color:rgba(124,92,255,.5);
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.35),
+    0 0 35px rgba(124,92,255,.1);
+}
+
+.project-image{
+  height:210px;
+  display:grid;
+  place-items:center;
+  font-size:80px;
+  position:relative;
+  overflow:hidden;
+}
+
+.project-image::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.08),
+    transparent
+  );
+  transform:translateX(-100%);
+  transition:.7s;
+}
+
+.project-card:hover .project-image::after{
+  transform:translateX(100%);
+}
+
+.race{
+  background:
+    radial-gradient(circle at center,
+    #5d1717,
+    #120b0b 60%,
+    #080808);
+}
+
+.flappy{
+  background:
+    radial-gradient(circle at center,
+    #164761,
+    #09161c 60%,
+    #080808);
+}
+
+.portfolio{
+  background:
+    radial-gradient(circle at center,
+    #493079,
+    #171023 60%,
+    #080808);
+}
+
+.project-content{
+  padding:27px;
+}
+
+.project-type{
+  color:var(--purple2);
+  font-size:11px;
+  letter-spacing:2px;
+  font-weight:bold;
+}
+
+.project-content h3{
+  font-size:26px;
+  margin:8px 0;
+}
+
+.project-content p{
+  color:var(--muted);
+}
+
+.tech{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin:20px 0;
+}
+
+.tech span{
+  background:#1b1b20;
+  border:1px solid #292930;
+  padding:5px 9px;
+  border-radius:7px;
+  font-size:11px;
+}
+
+/* PROJECT BUTTONS */
+
+.project-buttons{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+
+.project-btn{
+  display:inline-block;
+  padding:10px 13px;
+  border-radius:9px;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:bold;
+  transition:.3s;
+}
+
+.github-btn{
+  color:white;
+  background:#18181d;
+  border:1px solid #303038;
+}
+
+.github-btn:hover{
+  background:#27272e;
+  transform:translateY(-3px);
+}
+
+.play-btn{
+  color:white;
+  background:linear-gradient(
+    135deg,
+    var(--purple),
+    #5d43db
+  );
+  border:1px solid var(--purple);
+}
+
+.play-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 8px 25px rgba(124,92,255,.3);
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact{
+  text-align:center;
+}
+
+.contact > p{
+  color:var(--muted);
+}
+
+form{
+  max-width:600px;
+  margin:35px auto;
+  display:grid;
+  gap:12px;
+}
+
+input,
+textarea{
+  width:100%;
+  background:rgba(16,16,20,.8);
+  color:white;
+  border:1px solid var(--border);
+  padding:16px;
+  border-radius:12px;
+  outline:none;
+  transition:.3s;
+}
+
+input:focus,
+textarea:focus{
+  border-color:var(--purple);
+  box-shadow:0 0 20px rgba(124,92,255,.1);
+}
+
+textarea{
+  min-height:150px;
+  resize:vertical;
+}
+
+form button{
+  border:none;
+  cursor:pointer;
+}
+
+.socials{
+  display:flex;
+  justify-content:center;
+  gap:28px;
+  margin-top:20px;
+}
+
+.socials a{
+  color:#999;
+  text-decoration:none;
+  transition:.3s;
+}
+
+.socials a:hover{
+  color:white;
+  transform:translateY(-3px);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  padding:35px;
+  text-align:center;
+  border-top:1px solid var(--border);
+  color:#666;
+}
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
+}
+
+.reveal.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+  .hero,
+  .about-grid{
+    grid-template-columns:1fr;
+  }
+
+  .skills-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .projects-grid{
+    grid-template-columns:1fr;
+  }
+
+  .code-window{
+    max-width:700px;
+    width:100%;
+    margin:auto;
+  }
+
+}
+
+@media(max-width:600px){
+
+  header{
+    padding:0 5%;
+  }
+
+  nav{
+    display:none;
+    position:absolute;
+    top:75px;
+    left:0;
+    right:0;
+    padding:25px;
+    background:rgba(5,5,9,.96);
+    backdrop-filter:blur(20px);
+    flex-direction:column;
+    text-align:center;
+    border-bottom:1px solid var(--border);
+  }
+
+  nav.active{
+    display:flex;
+  }
+
+  .menu{
+    display:block;
+  }
+
+  .hero,
+  .section{
+    padding-left:5%;
+    padding-right:5%;
+  }
+
+  .hero{
+    padding-top:80px;
+    padding-bottom:80px;
+  }
+
+  .hero h1{
+    font-size:52px;
+    letter-spacing:-3px;
+  }
+
+  .hero h2{
+    font-size:22px;
+  }
+
+  .skills-grid{
+    grid-template-columns:1fr;
+  }
+
+  .code-window{
+    transform:none;
+    animation:none;
+  }
+
+  .buttons{
+    flex-direction:column;
+  }
+
+  .btn{
+    text-align:center;
+  }
+
+  .project-buttons{
+    flex-direction:column;
+  }
+
+  .project-btn{
+    width:100%;
+    text-align:center;
+  }
+
+  .section-title{
+    letter-spacing:-2px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="grid-bg"></div>
+
+
+<!-- HEADER -->
+
+<header>
+
+<a href="#home" class="logo">
+Lourence<span>.</span>
+</a>
+
+<nav id="nav">
+
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+
+</nav>
+
+<button class="menu" onclick="toggleMenu()">
+☰
+</button>
+
+</header>
+
+
+<!-- HERO -->
+
+<section id="home" class="hero">
+
+<div class="hero-content">
+
+<p class="tag">
+HELLO, I'M
+</p>
+
+<h1>
+Lourence
+<span>Tj R Non</span>
+</h1>
+
+<h2>
+Web Developer & <span class="typing"></span>
+</h2>
+
+<p class="description">
+I create modern websites, browser games, and creative
+digital experiences using HTML, CSS, JavaScript,
+and modern web technologies.
+</p>
+
+<div class="buttons">
+
+<a href="#projects" class="btn primary">
+View Projects
+</a>
+
+<a href="#contact" class="btn secondary">
+Contact Me
+</a>
+
+</div>
+
+</div>
+
+
+<!-- CODE -->
+
+<div class="code-window">
+
+<div class="dots">
+<i></i>
+<i></i>
+<i></i>
+</div>
+
+<pre><code>
+
+<span class="pink">const</span> developer = {
+
+  name:
+  <span class="green">"Lourence Tj R Non"</span>,
+
+  role:
+  <span class="green">"Web Developer"</span>,
+
+  passion:
+  <span class="green">"Building"</span>,
+
+  status:
+  <span class="green">"Available"</span>
+
+};
+
+</code></pre>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about" class="section reveal">
+
+<p class="tag">
+ABOUT ME
+</p>
+
+<h2 class="section-title">
+Building ideas into reality.
+</h2>
+
+<div class="about-grid">
+
+<div>
+
+<p>
+I'm a passionate developer who enjoys creating websites,
+interactive projects, and browser games.
+</p>
+
+<p>
+I like turning simple ideas into functional, clean,
+modern, and engaging digital experiences.
+</p>
+
+</div>
+
+<div class="info-card">
+
+<div>
+<strong>2026</strong>
+<span>Learning & Building</span>
+</div>
+
+<div>
+<strong>10+</strong>
+<span>Projects & Experiments</span>
+</div>
+
+<div>
+<strong>∞</strong>
+<span>Ideas</span>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SKILLS -->
+
+<section id="skills" class="section reveal">
+
+<p class="tag">
+MY SKILLS
+</p>
+
+<h2 class="section-title">
+Technologies I use.
+</h2>
+
+<div class="skills-grid">
+
+<div class="skill-card">
+
+<div class="skill-icon">
+HTML
+</div>
+
+<h3>HTML5</h3>
+
+<p>
+Semantic and structured web pages.
+</p>
+
+</div>
+
+
+<div class="skill-card">
+
+<div class="skill-icon">
+CSS
+</div>
+
+<h3>CSS3</h3>
+
+<p>
+Responsive layouts and modern UI design.
+</p>
+
+</div>
+
+
+<div class="skill-card">
+
+<div class="skill-icon">
+JS
+</div>
+
+<h3>JavaScript</h3>
+
+<p>
+Interactive and functional web applications.
+</p>
+
+</div>
+
+
+<div class="skill-card">
+
+<div class="skill-icon">
+GH
+</div>
+
+<h3>GitHub</h3>
+
+<p>
+Version control and project hosting.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section id="projects" class="section reveal">
+
+<p class="tag">
+FEATURED PROJECTS
+</p>
+
+<h2 class="section-title">
+Things I've built.
+</h2>
+
+<div class="projects-grid">
+
+
+<!-- STREET RACE -->
+
+<article class="project-card">
+
+<div class="project-image race">
+🏎️
+</div>
+
+<div class="project-content">
+
+<span class="project-type">
+WEB GAME
+</span>
+
+<h3>
+Street Race
+</h3>
+
+<p>
+A browser racing game created with HTML,
+CSS, and JavaScript.
+</p>
+
+<div class="tech">
+
+<span>HTML</span>
+<span>CSS</span>
+<span>JavaScript</span>
+
+</div>
+
+<div class="project-buttons">
+
+<a
+href="https://github.com/lourencetj2006-ux/Street-Race"
+target="_blank"
+rel="noopener noreferrer"
+class="project-btn github-btn"
+>
+GitHub Repository
+</a>
+
+<a
+href="https://lourencetj2006-ux.github.io/Street-Race/"
+target="_blank"
+rel="noopener noreferrer"
+class="project-btn play-btn"
+>
+▶ Play / Live Demo
+</a>
+
+</div>
+
+</div>
+
+</article>
+
+
+<!-- FLAPPY JUMP -->
+
+<article class="project-card">
+
+<div class="project-image flappy">
+🐦
+</div>
+
+<div class="project-content">
+
+<span class="project-type">
+WEB GAME
+</span>
+
+<h3>
+Flappy Jump
+</h3>
+
+<p>
+A fun arcade browser game where you jump
+through obstacles and try to get a high score.
+</p>
+
+<div class="tech">
+
+<span>HTML</span>
+<span>CSS</span>
+<span>JavaScript</span>
+
+</div>
+
+<div class="project-buttons">
+
+<a
+href="https://github.com/lourencetj2006-ux/Flappy-Jump"
+target="_blank"
+rel="noopener noreferrer"
+class="project-btn github-btn"
+>
+GitHub Repository
+</a>
+
+<a
+href="https://lourencetj2006-ux.github.io/Flappy-Jump/"
+target="_blank"
+rel="noopener noreferrer"
+class="project-btn play-btn"
+>
+▶ Play / Live Demo
+</a>
+
+</div>
+
+</div>
+
+</article>
+
+
+<!-- PORTFOLIO -->
+
+<article class="project-card">
+
+<div class="project-image portfolio">
+💻
+</div>
+
+<div class="project-content">
+
+<span class="project-type">
+WEBSITE
+</span>
+
+<h3>
+Developer Portfolio
+</h3>
+
+<p>
+A responsive portfolio website showcasing
+my skills, games, and web projects.
+</p>
+
+<div class="tech">
+
+<span>HTML</span>
+<span>CSS</span>
+<span>JavaScript</span>
+
+</div>
+
+<div class="project-buttons">
+
+<a
+href="#home"
+class="project-btn play-btn"
+>
+You're Here →
+</a>
+
+</div>
+
+</div>
+
+</article>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact" class="section contact reveal">
+
+<p class="tag">
+CONTACT
+</p>
+
+<h2 class="section-title">
+Let's build something.
+</h2>
+
+<p>
+Have a project idea or want to work together?
+Send me a message.
+</p>
+
+<form id="contactForm">
+
+<input
+type="text"
+id="name"
+placeholder="Your Name"
+required
+>
+
+<input
+type="email"
+id="email"
+placeholder="Your Email"
+required
+>
+
+<textarea
+id="message"
+placeholder="Your Message"
+required
+></textarea>
+
+<button
+type="submit"
+class="btn primary"
+>
+Send Message
+</button>
+
+</form>
+
+
+<div class="socials">
+
+<a
+href="https://github.com/lourencetj2006-ux"
+target="_blank"
+rel="noopener noreferrer"
+>
+GitHub
+</a>
+
+<a href="#">
+Facebook
+</a>
+
+<a href="mailto:lourencetj2006@gmail.com">
+Email
+</a>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+© 2026 Lourence Tj R Non. Built with HTML, CSS & JavaScript.
+</p>
+
+</footer>
+
+
+<script>
+
+/* MOBILE MENU */
+
+function toggleMenu(){
+
+document
+.getElementById("nav")
+.classList.toggle("active");
+
+}
+
+
+/* CLOSE MOBILE MENU */
+
+document
+.querySelectorAll("nav a")
+.forEach(link => {
+
+link.addEventListener("click", () => {
+
+document
+.getElementById("nav")
+.classList.remove("active");
+
+});
+
+});
+
+
+/* TYPING EFFECT */
+
+const words = [
+"Creative Builder",
+"Game Developer",
+"Web Creator",
+"Problem Solver"
+];
+
+let wordIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+const typing =
+document.querySelector(".typing");
+
+function typeEffect(){
+
+const current =
+words[wordIndex];
+
+if(!deleting){
+
+typing.textContent =
+current.substring(0,charIndex + 1);
+
+charIndex++;
+
+if(charIndex === current.length){
+
+deleting = true;
+
+setTimeout(typeEffect,1200);
+
+return;
+
+}
+
+}else{
+
+typing.textContent =
+current.substring(0,charIndex - 1);
+
+charIndex--;
+
+if(charIndex === 0){
+
+deleting = false;
+
+wordIndex =
+(wordIndex + 1) % words.length;
+
+}
+
+}
+
+setTimeout(
+typeEffect,
+deleting ? 50 : 90
+);
+
+}
+
+typeEffect();
+
+
+/* SCROLL REVEAL */
+
+const revealElements =
+document.querySelectorAll(".reveal");
+
+const revealObserver =
+new IntersectionObserver(
+(entries) => {
+
+entries.forEach(entry => {
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+},
+{
+threshold:.12
+}
+);
+
+revealElements.forEach(
+element => revealObserver.observe(element)
+);
+
+
+/* CONTACT FORM */
+
+document
+.getElementById("contactForm")
+.addEventListener(
+"submit",
+function(event){
+
+event.preventDefault();
+
+const name =
+document.getElementById("name").value;
+
+alert(
+"Thanks, " +
+name +
+"! Your message has been received."
+);
+
+this.reset();
+
+}
+);
+
+</script>
+
+</body>
+</html>
